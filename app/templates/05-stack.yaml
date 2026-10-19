@@ -1,0 +1,20 @@
+type: stack
+title: Technology stack
+subtitle: Các lớp của Aurora Platform
+footer: Aurora Platform · Technology
+layers:
+  - name: Trải nghiệm
+    items: [Web App, Mobile]
+  - name: Giao tiếp
+    items: [API Gateway, BFF]
+  - name: Nghiệp vụ
+    items: [Order, Payment, Identity]
+  - name: Dữ liệu
+    items:
+      - PostgreSQL
+      - Redis
+      - Kafka
+      - label: Object Storage
+        tone: accent
+  - name: Vận hành
+    items: [Kubernetes, Prometheus, Grafana, Argo CD]

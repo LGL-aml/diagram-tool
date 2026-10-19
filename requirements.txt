@@ -1,0 +1,6 @@
+fastapi>=0.115
+uvicorn>=0.32
+pyyaml>=6
+diagrams>=0.25
+graphviz>=0.20
+schemdraw>=0.23

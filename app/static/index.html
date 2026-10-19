@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Diagram Studio</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231B4F8A'/%3E%3Cpath d='M7 16h7M18 10h7M18 22h7' stroke='white' stroke-width='2' stroke-linecap='round'/%3E%3Ccircle cx='16' cy='16' r='2.2' fill='white'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/static/styles.css?v=2">
+</head>
+<body>
+  <header class="top">
+    <div class="brand">
+      <span class="mark" aria-hidden="true"></span>
+      <div>
+        <h1>Diagram Studio</h1>
+        <p>Architecture, roadmap, sequence và diagram kỹ thuật. Localhost, cùng một theme.</p>
+      </div>
+    </div>
+    <div class="top-meta">
+      <div class="palette" title="Bảng màu report">
+        <i style="background:#1B4F8A"></i>
+        <i style="background:#5E7388"></i>
+        <i style="background:#C56A12"></i>
+        <i style="background:#0E7A45"></i>
+        <i style="background:#B42318"></i>
+        <span>Theme report</span>
+      </div>
+      <p id="health">Đang kiểm tra Graphviz…</p>
+    </div>
+  </header>
+  <div id="banner" class="banner" hidden></div>
+  <main class="workspace">
+    <aside class="pane library">
+      <div class="pane-head">
+        <h2>Bộ spec</h2>
+        <div class="row">
+          <button type="button" id="pack" class="primary">Xem cả bộ mẫu</button>
+          <button type="button" id="zip">Tải ZIP</button>
+        </div>
+      </div>
+      <input id="doc-filter" type="search" placeholder="Lọc spec" autocomplete="off">
+      <div id="docs" class="docs"></div>
+      <form id="create" class="create">
+        <select id="new-type" aria-label="Loại diagram mới"></select>
+        <button type="submit">Tạo spec</button>
+      </form>
+    </aside>
+    <section class="pane editor">
+      <div class="pane-head">
+        <div>
+          <h2 id="editor-title">Spec</h2>
+          <p id="editor-note">Sửa YAML rồi kết xuất. Giữ cùng footer cho cả bộ hình.</p>
+        </div>
+      </div>
+      <textarea id="spec" spellcheck="false" aria-label="Nội dung spec"></textarea>
+      <div class="toolbar">
+        <button type="button" id="render" class="primary">Kết xuất</button>
+        <button type="button" id="save">Lưu spec</button>
+        <button type="button" id="download-yaml">Tải YAML</button>
+        <button type="button" id="download-svg">Tải SVG</button>
+        <button type="button" id="download-png">Tải PNG</button>
+        <span id="status" role="status">Ctrl+Enter để kết xuất</span>
+      </div>
+      <details>
+        <summary>Danh mục icon</summary>
+        <p class="hint">Dùng cho <code>type: architecture</code>. Bấm một dòng để chèn vào spec.</p>
+        <input id="icon-filter" type="search" placeholder="postgres, kafka, react, eks…" autocomplete="off">
+        <div id="icons" class="icons"></div>
+      </details>
+      <details>
+        <summary>Các trường spec</summary>
+        <div class="help">
+          <p><strong>architecture</strong> — clusters, nodes (<code>icon</code>), edges. Renderer: diagrams + Graphviz.</p>
+          <p><strong>context / flow / dependency</strong> — nodes (<code>kind</code> hoặc <code>shape</code>), edges. Renderer: Graphviz.</p>
+          <p><strong>sequence</strong> — actors, messages. <code>style: return</code> là mũi tên phản hồi.</p>
+          <p><strong>stack</strong> — layers từ trên xuống dưới.</p>
+          <p><strong>roadmap</strong> — <code>YYYY-MM</code> hoặc <code>YYYY-Qn</code>, status done / active / planned / risk.</p>
+          <p><strong>schematic</strong> — <code>library: electrical | dsp | flow | logic</code>, mỗi phần tử là class Schemdraw.</p>
+          <p>Cạnh dùng <code>from</code>, <code>to</code>, <code>label</code>, <code>style</code>, <code>tone</code>. Cùng <code>footer</code> thì cả bộ hình trong báo cáo khớp nhau.</p>
+        </div>
+      </details>
+    </section>
+    <section class="pane stage">
+      <div class="pane-head">
+        <div>
+          <h2>Bản xem</h2>
+          <p id="preview-meta">Khung 1200px, font Segoe UI, cùng header và footer.</p>
+        </div>
+      </div>
+      <div id="warnings" class="warnings" hidden></div>
+      <div id="preview" class="preview">
+        <div class="empty">
+          <p>Chọn một spec trong bộ mẫu Aurora, rồi bấm Kết xuất.</p>
+          <p>Cả bộ dùng chung footer <em>Aurora Platform · Technology</em>.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="/static/app.js?v=1"></script>
+</body>
+</html>

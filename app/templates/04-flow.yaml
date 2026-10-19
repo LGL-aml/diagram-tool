@@ -1,0 +1,38 @@
+type: flow
+title: Quy trình phát hành
+subtitle: Thay đổi kiến trúc đến production
+footer: Aurora Platform · Technology
+direction: TB
+nodes:
+  - id: start
+    label: Yêu cầu thay đổi
+    shape: ellipse
+  - id: review
+    label: Review kiến trúc
+    shape: diamond
+  - id: build
+    label: Build và kiểm thử
+    shape: box
+  - id: deploy
+    label: Triển khai production
+    shape: box
+  - id: done
+    label: Hoàn tất
+    shape: ellipse
+edges:
+  - from: start
+    to: review
+  - from: review
+    to: build
+    label: Đạt
+    tone: done
+  - from: review
+    to: start
+    label: Chỉnh sửa
+    style: dashed
+    tone: accent
+    constraint: false
+  - from: build
+    to: deploy
+  - from: deploy
+    to: done

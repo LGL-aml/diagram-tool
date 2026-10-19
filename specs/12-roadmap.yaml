@@ -1,0 +1,40 @@
+type: roadmap
+title: Figure 12. Development periods and public release checkpoints
+subtitle: Google Play shows a listed update on 25 August. Apple records the iOS release on 5 October
+footer: LawShield · Technology
+locale: en
+start: 2026-02
+end: 2026-10
+today: 2026-10-19
+lanes:
+  - name: Preparation
+    items:
+      - label: Scope and Lexi workflow
+        start: 2026-02
+        end: 2026-02
+        status: done
+  - name: Web platform
+    items:
+      - label: Backend and legal corpus
+        start: 2026-03
+        end: 2026-05
+        status: done
+      - label: Documents and workplace
+        start: 2026-06
+        end: 2026-09
+        status: done
+  - name: Mobile app
+    items:
+      - label: Flutter client
+        start: 2026-08
+        end: 2026-09
+        status: done
+      - label: Store readiness
+        start: 2026-09
+        end: 2026-10
+        status: done
+milestones:
+  - label: Google Play update
+    at: 2026-08-25
+  - label: iOS public release
+    at: 2026-10-05

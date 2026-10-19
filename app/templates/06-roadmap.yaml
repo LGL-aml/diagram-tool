@@ -1,0 +1,58 @@
+# Mốc thời gian: YYYY-MM hoặc YYYY-Qn. status: done | active | planned | risk
+type: roadmap
+title: Lộ trình công nghệ 2026
+subtitle: Bốn dòng việc của Aurora Platform
+footer: Aurora Platform · Technology
+start: 2026-01
+end: 2026-12
+today: 2026-10
+lanes:
+  - name: Nền tảng
+    items:
+      - label: Chuẩn hoá Kubernetes
+        start: 2026-01
+        end: 2026-04
+        status: done
+      - label: Service mesh
+        start: 2026-05
+        end: 2026-08
+        status: active
+      - label: Multi-region
+        start: 2026-09
+        end: 2026-12
+        status: planned
+  - name: Dữ liệu
+    items:
+      - label: Data platform
+        start: 2026-02
+        end: 2026-07
+        status: active
+      - label: Realtime streaming
+        start: 2026-08
+        end: 2026-12
+        status: planned
+  - name: Bảo mật
+    items:
+      - label: Zero trust
+        start: 2026-01
+        end: 2026-06
+        status: active
+      - label: Secrets rotation
+        start: 2026-07
+        end: 2026-10
+        status: risk
+  - name: Sản phẩm
+    items:
+      - label: Cổng thanh toán mới
+        start: 2026-03
+        end: 2026-09
+        status: active
+      - label: Báo cáo đối soát
+        start: 2026-10
+        end: 2026-12
+        status: planned
+milestones:
+  - label: Cắt hạ tầng cũ
+    at: 2026-06
+  - label: Phát hành kiến trúc
+    at: 2026-12

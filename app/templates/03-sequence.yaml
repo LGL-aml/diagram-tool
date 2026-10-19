@@ -1,0 +1,42 @@
+type: sequence
+title: Luồng thanh toán
+subtitle: Từ request đến hạch toán
+footer: Aurora Platform · Technology
+actors:
+  - id: client
+    label: Client
+    kind: person
+  - id: api
+    label: API
+  - id: pay
+    label: Payment
+  - id: bank
+    label: Core Banking
+    kind: external
+  - id: db
+    label: Database
+messages:
+  - from: client
+    to: api
+    label: POST /checkout
+  - from: api
+    to: pay
+    label: Authorize
+  - from: pay
+    to: bank
+    label: Hạch toán
+  - from: bank
+    to: pay
+    label: OK
+    style: return
+  - from: pay
+    to: api
+    label: Approved
+    style: return
+  - from: api
+    to: db
+    label: Lưu giao dịch
+  - from: api
+    to: client
+    label: 200 OK
+    style: return

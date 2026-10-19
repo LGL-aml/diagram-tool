@@ -1,0 +1,39 @@
+type: stack
+title: Figure 9. Main web and mobile navigation areas
+subtitle: The web workspace covers organizational work. Mobile keeps frequent individual tasks
+footer: LawShield · Technology
+layers:
+  - name: Public
+    items:
+      - Features
+      - Legal lookup
+      - Solutions
+      - News
+  - name: Web
+    items:
+      - Dashboard
+      - Lexi
+      - label: Contracts
+        tone: accent
+      - label: Workplace
+        tone: accent
+      - label: Lawyers
+        tone: accent
+      - label: Settings
+        tone: accent
+      - label: Admin
+        tone: accent
+  - name: Mobile
+    items:
+      - label: Lexi
+        tone: done
+      - label: Legal lookup
+        tone: done
+      - label: Documents
+        tone: done
+      - label: Account
+        tone: done
+      - label: Sign-in
+        tone: done
+      - label: iOS plans
+        tone: done

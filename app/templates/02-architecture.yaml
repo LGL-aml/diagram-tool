@@ -1,0 +1,75 @@
+# Icon lấy từ thư viện diagrams, ví dụ aws.network.APIGateway
+type: architecture
+title: Kiến trúc nền tảng Aurora
+subtitle: Đường đi của một giao dịch
+footer: Aurora Platform · Technology
+direction: LR
+nodes:
+  - id: user
+    label: Người dùng
+    icon: onprem.client.Users
+  - id: bank
+    label: Core Banking
+    icon: onprem.compute.Server
+clusters:
+  - name: Truy cập
+    nodes:
+      - id: web
+        label: Web App
+        icon: programming.framework.React
+      - id: cdn
+        label: CDN
+        icon: aws.network.CloudFront
+  - name: Dịch vụ
+    nodes:
+      - id: gw
+        label: API Gateway
+        icon: aws.network.APIGateway
+      - id: auth
+        label: Identity
+        icon: aws.security.Cognito
+      - id: order
+        label: Order
+        icon: k8s.compute.Pod
+      - id: pay
+        label: Payment
+        icon: k8s.compute.Pod
+  - name: Dữ liệu
+    nodes:
+      - id: db
+        label: PostgreSQL
+        icon: onprem.database.PostgreSQL
+      - id: cache
+        label: Redis
+        icon: onprem.inmemory.Redis
+      - id: bus
+        label: Kafka
+        icon: onprem.queue.Kafka
+edges:
+  - from: user
+    to: web
+    label: HTTPS
+  - from: web
+    to: cdn
+  - from: cdn
+    to: gw
+  - from: gw
+    to: auth
+    label: Xác thực
+    style: dashed
+  - from: gw
+    to: order
+  - from: order
+    to: pay
+    label: gRPC
+  - from: order
+    to: db
+  - from: order
+    to: cache
+  - from: pay
+    to: bus
+    label: Sự kiện
+    style: dashed
+  - from: pay
+    to: bank
+    label: Hạch toán

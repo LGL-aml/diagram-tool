@@ -1,0 +1,38 @@
+# library: electrical | dsp | flow | logic. Phần tử là class của Schemdraw.
+type: schematic
+title: Khối xử lý tín hiệu thiết bị biên
+subtitle: Thu RF đến ADC
+footer: Aurora Platform · Technology
+library: dsp
+elements:
+  - element: Filter
+    direction: right
+    label: BPF
+    options:
+      response: bp
+  - element: Line
+    direction: right
+    length: 0.45
+  - element: Amp
+    direction: right
+    label: LNA
+  - element: Line
+    direction: right
+    length: 0.45
+  - element: Mixer
+    direction: right
+    label: Mixer
+  - element: Line
+    direction: right
+    length: 0.45
+  - element: Filter
+    direction: right
+    label: LPF
+    options:
+      response: lp
+  - element: Line
+    direction: right
+    length: 0.45
+  - element: Adc
+    direction: right
+    label: ADC

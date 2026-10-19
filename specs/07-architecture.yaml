@@ -1,0 +1,90 @@
+type: architecture
+title: Figure 7. LawShield system architecture
+subtitle: Web and mobile share FastAPI, two PostgreSQL databases, Redis, and Vietnix S3
+footer: LawShield · Technology
+direction: TB
+nodes:
+  - id: users
+    label: Users
+    icon: onprem.client.Users
+clusters:
+  - name: Clients
+    nodes:
+      - id: web
+        label: Next.js web
+        icon: programming.framework.Nextjs
+      - id: mobile
+        label: Flutter mobile
+        icon: programming.framework.Flutter
+  - name: Platform
+    nodes:
+      - id: caddy
+        label: Caddy
+        icon: onprem.network.Caddy
+      - id: api
+        label: FastAPI
+        icon: programming.framework.Fastapi
+  - name: Data
+    nodes:
+      - id: authdb
+        label: auth_db
+        icon: onprem.database.Postgresql
+      - id: legaldb
+        label: legal_db
+        icon: onprem.database.Postgresql
+      - id: redis
+        label: Redis
+        icon: onprem.inmemory.Redis
+      - id: s3
+        label: Vietnix S3
+        icon: aws.storage.S3
+  - name: Assistance
+    nodes:
+      - id: openai
+        label: OpenAI
+        icon: azure.aimachinelearning.AzureOpenai
+      - id: embed
+        label: Embed server
+        icon: programming.language.Python
+      - id: office
+        label: OnlyOffice
+        icon: onprem.compute.Server
+      - id: accounts
+        label: Sign-in and StoreKit
+        icon: generic.device.Mobile
+edges:
+  - from: users
+    to: web
+  - from: users
+    to: mobile
+  - from: web
+    to: caddy
+    label: HTTPS
+  - from: mobile
+    to: caddy
+    label: HTTPS
+  - from: caddy
+    to: api
+  - from: api
+    to: authdb
+  - from: api
+    to: legaldb
+  - from: api
+    to: redis
+  - from: api
+    to: s3
+  - from: api
+    to: openai
+  - from: api
+    to: embed
+  - from: api
+    to: office
+  - from: embed
+    to: legaldb
+    style: dashed
+    label: RAG
+    constraint: false
+  - from: mobile
+    to: accounts
+    style: dashed
+    constraint: false

@@ -1,0 +1,62 @@
+type: flow
+title: Figure 8. Web integration and deployment workflow
+subtitle: Push to main runs checks only. Production starts when a person confirms DEPLOY
+footer: LawShield · Technology
+direction: LR
+splines: spline
+nodes:
+  - id: change
+    label: Push or pull request
+    shape: ellipse
+  - id: ci
+    label: Lint and backend tests
+    shape: box
+  - id: confirm
+    label: DEPLOY?
+    shape: diamond
+  - id: build
+    label: Build and push images
+    shape: box
+  - id: slot
+    label: Dump data, start idle slot
+    shape: box
+  - id: health
+    label: Health OK?
+    shape: diamond
+  - id: caddy
+    label: Caddy switch, stop old slot
+    shape: box
+  - id: live
+    label: Release is live
+    shape: ellipse
+edges:
+  - from: change
+    to: ci
+  - from: ci
+    to: confirm
+  - from: confirm
+    to: build
+    label: "Yes"
+    tone: done
+  - from: confirm
+    to: change
+    label: "No"
+    style: dashed
+    tone: accent
+    constraint: false
+  - from: build
+    to: slot
+  - from: slot
+    to: health
+  - from: health
+    to: caddy
+    label: "Yes"
+    tone: done
+  - from: health
+    to: slot
+    label: Keep current
+    style: dashed
+    tone: accent
+    constraint: false
+  - from: caddy
+    to: live

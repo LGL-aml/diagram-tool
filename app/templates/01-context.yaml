@@ -1,0 +1,36 @@
+# C4 mức context. kind: person | system | external | datastore
+type: context
+title: Bối cảnh hệ thống Aurora
+subtitle: C4 · mức context
+footer: Aurora Platform · Technology
+direction: LR
+nodes:
+  - id: staff
+    label: Nhân viên vận hành
+    kind: person
+  - id: partner
+    label: Đối tác tích hợp
+    kind: person
+  - id: aurora
+    label: "Aurora Platform\nHệ thống nội bộ"
+    kind: system
+  - id: idp
+    label: Identity Provider
+    kind: external
+  - id: bank
+    label: Core Banking
+    kind: external
+edges:
+  - from: staff
+    to: aurora
+    label: Vận hành giao dịch
+  - from: partner
+    to: aurora
+    label: API đối tác
+  - from: aurora
+    to: idp
+    label: Xác thực
+    style: dashed
+  - from: aurora
+    to: bank
+    label: Hạch toán

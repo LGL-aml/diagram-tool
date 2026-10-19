@@ -1,0 +1,82 @@
+type: flow
+title: Figure 13. Android and iOS store delivery process
+subtitle: Each store needs a signed build, listing, privacy declarations, and review
+footer: LawShield · Technology
+direction: LR
+splines: spline
+nodes:
+  - id: checklist
+    label: Release checklist
+    shape: ellipse
+  - id: record
+    label: Build record
+    shape: ellipse
+clusters:
+  - name: Google Play
+    nodes:
+      - id: aab
+        label: Signed bundle
+        shape: box
+      - id: listing
+        label: Listing and privacy
+        shape: box
+      - id: track
+        label: Test or production
+        shape: box
+      - id: preview
+        label: Play review
+        shape: diamond
+      - id: rollout
+        label: Staged rollout
+        shape: box
+  - name: App Store
+    nodes:
+      - id: sign
+        label: Signed build
+        shape: box
+      - id: connect
+        label: Connect and plans
+        shape: box
+      - id: upload
+        label: Upload build
+        shape: box
+      - id: flight
+        label: TestFlight
+        shape: box
+      - id: review
+        label: App Review
+        shape: diamond
+      - id: release
+        label: Release and restore
+        shape: box
+edges:
+  - from: checklist
+    to: aab
+  - from: checklist
+    to: sign
+  - from: aab
+    to: listing
+  - from: listing
+    to: track
+  - from: track
+    to: preview
+  - from: preview
+    to: rollout
+    label: "Yes"
+    tone: done
+  - from: rollout
+    to: record
+  - from: sign
+    to: connect
+  - from: connect
+    to: upload
+  - from: upload
+    to: flight
+  - from: flight
+    to: review
+  - from: review
+    to: release
+    label: "Yes"
+    tone: done
+  - from: release
+    to: record

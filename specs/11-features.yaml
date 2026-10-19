@@ -1,0 +1,48 @@
+type: stack
+title: Figure 11. LawShield feature overview
+subtitle: Both clients share Lexi and legal lookup. The web workspace adds organizational work
+footer: LawShield · Technology
+layers:
+  - name: Clients
+    items:
+      - label: Next.js web workspace
+        tone: primary
+      - label: Flutter iOS and Android
+        tone: primary
+  - name: Shared
+    items:
+      - Lexi assistant
+      - Legal lookup
+      - Documents
+      - label: Credits and account
+        tone: primary
+  - name: Web
+    items:
+      - label: Contract analysis
+        tone: accent
+      - label: CLM templates
+        tone: accent
+      - label: OnlyOffice editing
+        tone: accent
+      - label: Workplace
+        tone: accent
+      - label: Compliance
+        tone: accent
+      - label: Deadlines
+        tone: accent
+      - label: Lawyer services
+        tone: accent
+      - label: Admin
+        tone: accent
+  - name: Mobile
+    items:
+      - label: Chat history
+        tone: done
+      - label: Source lookup
+        tone: done
+      - label: Document access
+        tone: done
+      - label: Account controls
+        tone: done
+      - label: Basic, Pro, ProMax
+        tone: done
